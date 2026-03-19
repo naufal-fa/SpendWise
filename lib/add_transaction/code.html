@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#f20db9",
+              "background-light": "#f8f5f8",
+              "background-dark": "#22101e",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glow-primary {
+            box-shadow: 0 0 15px rgba(242, 13, 185, 0.4);
+        }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(242, 13, 185, 0.6);
+        }
+        .glow-border:focus-within {
+            box-shadow: 0 0 10px rgba(242, 13, 185, 0.5);
+            border-color: #f20db9;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="max-w-md mx-auto min-h-screen flex flex-col relative overflow-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between p-6">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-200/50 dark:bg-primary/10 text-slate-900 dark:text-slate-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold">Add Transaction</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<main class="flex-1 px-6 pb-24">
+<!-- Amount Input Section -->
+<div class="flex flex-col items-center justify-center py-10 space-y-2">
+<span class="text-slate-500 dark:text-primary/60 text-sm font-medium uppercase tracking-widest">Enter Amount</span>
+<div class="relative group">
+<input class="bg-transparent border-none text-center text-6xl font-bold text-primary focus:ring-0 w-full glow-text" type="text" value="$0.00"/>
+</div>
+</div>
+<!-- Form Fields -->
+<div class="space-y-8">
+<!-- Category Grid -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-lg font-bold">Category</h3>
+<button class="text-primary text-sm font-medium">See All</button>
+</div>
+<div class="grid grid-cols-4 gap-4">
+<button class="flex flex-col items-center space-y-2 group">
+<div class="w-14 h-14 rounded-xl bg-primary flex items-center justify-center text-white glow-primary border-2 border-primary">
+<span class="material-symbols-outlined text-2xl">restaurant</span>
+</div>
+<span class="text-xs font-medium text-slate-400">Food</span>
+</button>
+<button class="flex flex-col items-center space-y-2 group">
+<div class="w-14 h-14 rounded-xl bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/20 flex items-center justify-center text-slate-600 dark:text-primary/80 hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-2xl">directions_car</span>
+</div>
+<span class="text-xs font-medium text-slate-400">Travel</span>
+</button>
+<button class="flex flex-col items-center space-y-2 group">
+<div class="w-14 h-14 rounded-xl bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/20 flex items-center justify-center text-slate-600 dark:text-primary/80 hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-2xl">shopping_bag</span>
+</div>
+<span class="text-xs font-medium text-slate-400">Shopping</span>
+</button>
+<button class="flex flex-col items-center space-y-2 group">
+<div class="w-14 h-14 rounded-xl bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/20 flex items-center justify-center text-slate-600 dark:text-primary/80 hover:border-primary/50 transition-all">
+<span class="material-symbols-outlined text-2xl">payments</span>
+</div>
+<span class="text-xs font-medium text-slate-400">Bills</span>
+</button>
+</div>
+</section>
+<!-- Date & Note Section -->
+<div class="space-y-4">
+<div class="flex flex-col space-y-2">
+<label class="text-sm font-medium text-slate-500 dark:text-slate-400 ml-1">Date</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-primary">calendar_today</span>
+<input class="w-full bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/20 rounded-xl py-4 pl-12 pr-4 focus:outline-none glow-border text-sm" type="text" value="Today, 24 Oct 2023"/>
+</div>
+</div>
+<div class="flex flex-col space-y-2">
+<label class="text-sm font-medium text-slate-500 dark:text-slate-400 ml-1">Note (Optional)</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-primary">edit_note</span>
+<input class="w-full bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/20 rounded-xl py-4 pl-12 pr-4 focus:outline-none glow-border text-sm" placeholder="What was this for?" type="text"/>
+</div>
+</div>
+</div>
+<!-- Attachment Area (Placeholder) -->
+<div class="border-2 border-dashed border-slate-200 dark:border-primary/20 rounded-xl p-6 flex flex-col items-center justify-center space-y-2 bg-slate-50 dark:bg-primary/5">
+<span class="material-symbols-outlined text-3xl text-primary/40">add_a_photo</span>
+<span class="text-sm text-slate-400">Add receipt or photo</span>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Action -->
+<div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto p-6 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light/95 dark:via-background-dark/95 to-transparent">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-[0_0_25px_rgba(242,13,185,0.6)] flex items-center justify-center space-x-2 transition-transform active:scale-95">
+<span class="material-symbols-outlined">check_circle</span>
+<span>Save Transaction</span>
+</button>
+</div>
+</div>
+<!-- Decorative Background Glows -->
+<div class="fixed top-[-10%] right-[-10%] w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="fixed bottom-[-5%] left-[-10%] w-80 h-80 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+</body></html>

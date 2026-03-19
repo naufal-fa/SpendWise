@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20db9",
+                        "background-light": "#f8f5f8",
+                        "background-dark": "#22101e",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>SpendWise - Settings</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="flex items-center p-4 justify-between">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100 cursor-pointer">arrow_back</span>
+</div>
+<h1 class="text-xl font-bold leading-tight tracking-tight flex-1 text-center pr-12">Settings</h1>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Profile Section -->
+<section class="p-6">
+<div class="flex items-center gap-6 bg-primary/5 dark:bg-primary/10 p-6 rounded-xl border border-primary/20">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-20 ring-2 ring-primary ring-offset-4 ring-offset-background-dark" data-alt="User profile avatar of a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB9c2ZKwRQuvouTR1gxgG-x8D02U-Zbky5uNF_4t3fUwysYyWfGV2ivcVEgE6ezb1pP2wFvaQyPpQkynQtnnZlQCo6c6WusjHyqPuh-7tcweOrqcuBNBHwZ4HZm4cAhSKR87ZbRsyMpiDnYXHL8C1uBfm8A4Kj0WOjzIOk65GMAScW39ne0kreLj8qzz5KycO16-Odlb9xlQM9jrgdCJsDHUucp-6RUm7GTUWlRwuADIRUAeE6txie348yLm4ZrotmQP2NQqxPWNOk");'>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-white rounded-full p-1 border-2 border-background-dark">
+<span class="material-symbols-outlined text-xs">edit</span>
+</div>
+</div>
+<div class="flex flex-col">
+<p class="text-2xl font-bold tracking-tight">Alex Nova</p>
+<p class="text-primary/70 text-sm font-medium">alex.nova@spendwise.app</p>
+</div>
+</div>
+</section>
+<!-- Notifications Section -->
+<section class="px-6 mb-8">
+<h3 class="text-primary font-bold text-sm uppercase tracking-widest mb-4 px-2">Notifications</h3>
+<div class="space-y-1 bg-primary/5 dark:bg-primary/5 rounded-xl border border-primary/10 overflow-hidden">
+<!-- Daily Reminders -->
+<div class="flex items-center justify-between p-4 border-b border-primary/10">
+<div class="flex items-center gap-4">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">alarm</span>
+</div>
+<p class="font-medium">Daily Reminders</p>
+</div>
+<label class="relative flex h-7 w-12 cursor-pointer items-center rounded-full bg-slate-300 dark:bg-slate-700 p-1 has-[:checked]:bg-primary transition-colors">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="h-5 w-5 rounded-full bg-white shadow-md transition-all peer-checked:translate-x-5"></div>
+</label>
+</div>
+<!-- Budget Alerts -->
+<div class="flex items-center justify-between p-4 border-b border-primary/10">
+<div class="flex items-center gap-4">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<p class="font-medium">Budget Alerts</p>
+</div>
+<label class="relative flex h-7 w-12 cursor-pointer items-center rounded-full bg-slate-300 dark:bg-slate-700 p-1 has-[:checked]:bg-primary transition-colors">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="h-5 w-5 rounded-full bg-white shadow-md transition-all peer-checked:translate-x-5"></div>
+</label>
+</div>
+<!-- Weekly Reports -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">insights</span>
+</div>
+<p class="font-medium">Weekly Reports</p>
+</div>
+<label class="relative flex h-7 w-12 cursor-pointer items-center rounded-full bg-slate-300 dark:bg-slate-700 p-1 has-[:checked]:bg-primary transition-colors">
+<input class="sr-only peer" type="checkbox"/>
+<div class="h-5 w-5 rounded-full bg-white shadow-md transition-all peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- General Settings Section -->
+<section class="px-6 mb-8">
+<h3 class="text-primary font-bold text-sm uppercase tracking-widest mb-4 px-2">General</h3>
+<div class="space-y-1 bg-primary/5 dark:bg-primary/5 rounded-xl border border-primary/10 overflow-hidden">
+<!-- Currency -->
+<div class="flex items-center justify-between p-4 border-b border-primary/10">
+<div class="flex items-center gap-4">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<p class="font-medium">Currency</p>
+</div>
+<div class="flex items-center gap-2 text-primary">
+<span class="text-sm font-bold">USD ($)</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</div>
+<!-- Security / Biometrics -->
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-4">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">fingerprint</span>
+</div>
+<p class="font-medium">Face ID / Biometrics</p>
+</div>
+<label class="relative flex h-7 w-12 cursor-pointer items-center rounded-full bg-slate-300 dark:bg-slate-700 p-1 has-[:checked]:bg-primary transition-colors">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="h-5 w-5 rounded-full bg-white shadow-md transition-all peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Logout Button -->
+<section class="px-6 mb-12">
+<button class="w-full py-4 px-6 rounded-xl border border-red-500/30 bg-red-500/10 text-red-500 font-bold flex items-center justify-center gap-2 hover:bg-red-500/20 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </button>
+</section>
+</main>
+<!-- Navigation Bar -->
+<nav class="fixed bottom-0 w-full bg-background-light dark:bg-[#271b24] border-t border-primary/10 px-4 pb-6 pt-2 z-50">
+<div class="flex gap-2 max-w-md mx-auto">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-primary/60" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium uppercase tracking-wider">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-primary/60" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<p class="text-[10px] font-medium uppercase tracking-wider">Transact</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-primary/60" href="#">
+<span class="material-symbols-outlined">pie_chart</span>
+<p class="text-[10px] font-medium uppercase tracking-wider">Insights</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary dark:text-white" href="#">
+<div class="relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">settings</span>
+<div class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></div>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-wider">Settings</p>
+</a>
+</div>
+</nav>
+</body></html>
