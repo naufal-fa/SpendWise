@@ -160,7 +160,7 @@ SpendWise embraces a **premium dark theme** aesthetic with:
 
 ## 👨‍💻 Author
 
-**Naufal Falah Anwar**
+**Naufal Faqiih Ashshiddiq**
 
 ---
 
