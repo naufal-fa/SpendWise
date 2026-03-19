@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -10,10 +11,21 @@ class NotificationService {
 
   final FlutterLocalNotificationsPlugin _notificationsPlugin = FlutterLocalNotificationsPlugin();
   bool _initialized = false;
-  bool isBudgetAlertsEnabled = true;
+  bool _isBudgetAlertsEnabled = true;
+
+  bool get isBudgetAlertsEnabled => _isBudgetAlertsEnabled;
+
+  Future<void> setBudgetAlertsEnabled(bool value) async {
+    _isBudgetAlertsEnabled = value;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('budget_alerts_enabled', value);
+  }
 
   Future<void> init() async {
     if (_initialized) return;
+
+    final prefs = await SharedPreferences.getInstance();
+    _isBudgetAlertsEnabled = prefs.getBool('budget_alerts_enabled') ?? true;
 
     tz.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation('Asia/Jakarta'));

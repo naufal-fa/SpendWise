@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Currency {
   final String code;
@@ -38,10 +39,28 @@ class CurrencyProvider extends ChangeNotifier {
 
   Currency _selected = currencies[0]; // Default: USD
 
+  CurrencyProvider() {
+    _loadCurrency();
+  }
+
+  Future<void> _loadCurrency() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedCode = prefs.getString('selected_currency');
+    if (savedCode != null) {
+      final index = currencies.indexWhere((c) => c.code == savedCode);
+      if (index != -1) {
+        _selected = currencies[index];
+        notifyListeners();
+      }
+    }
+  }
+
   Currency get selected => _selected;
 
-  void setCurrency(Currency currency) {
+  Future<void> setCurrency(Currency currency) async {
     _selected = currency;
     notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('selected_currency', currency.code);
   }
 }

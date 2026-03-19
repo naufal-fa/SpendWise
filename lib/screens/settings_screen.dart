@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../core/app_colors.dart';
 import '../providers/currency_provider.dart';
 import '../services/notification_service.dart';
@@ -14,8 +15,23 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _dailyReminders = true;
-  bool _budgetAlerts = NotificationService().isBudgetAlertsEnabled;
+  bool _budgetAlerts = true;
   bool _weeklyReports = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPreferences();
+  }
+
+  Future<void> _loadPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _dailyReminders = prefs.getBool('daily_reminders_enabled') ?? true;
+      _weeklyReports = prefs.getBool('weekly_reports_enabled') ?? false;
+      _budgetAlerts = NotificationService().isBudgetAlertsEnabled;
+    });
+  }
 
   void _showCurrencyPicker() {
     showModalBottomSheet(
@@ -265,8 +281,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   icon: Icons.alarm,
                   label: 'Daily Reminders',
                   value: _dailyReminders,
-                  onChanged: (v) {
+                  onChanged: (v) async {
                     setState(() => _dailyReminders = v);
+                    final prefs = await SharedPreferences.getInstance();
+                    await prefs.setBool('daily_reminders_enabled', v);
                     if (v) NotificationService().scheduleDailyReminders();
                     else NotificationService().clearDailyReminders();
                   },
@@ -278,7 +296,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   value: _budgetAlerts,
                   onChanged: (v) {
                     setState(() => _budgetAlerts = v);
-                    NotificationService().isBudgetAlertsEnabled = v;
+                    NotificationService().setBudgetAlertsEnabled(v);
                   },
                   showBorder: true,
                 ),
@@ -286,8 +304,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   icon: Icons.insights,
                   label: 'Weekly Reports',
                   value: _weeklyReports,
-                  onChanged: (v) {
+                  onChanged: (v) async {
                     setState(() => _weeklyReports = v);
+                    final prefs = await SharedPreferences.getInstance();
+                    await prefs.setBool('weekly_reports_enabled', v);
                     if (v) NotificationService().scheduleWeeklyReport();
                     else NotificationService().clearWeeklyReport();
                   },
